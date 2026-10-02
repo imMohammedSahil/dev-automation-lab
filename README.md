@@ -1,61 +1,48 @@
-# 🚀 Pair Extraordinaire Achievement Automation Sandbox
+# Dev Automation Lab ⚙️
 
-This sandbox repository provides an automated workflow to safely unlock and level up the **Pair Extraordinaire** achievement badge on your GitHub profile.
-
----
-
-## 🎖️ Badge Tier Reference
-
-| Tier | Required Merged Co-Authored PRs |
-| :--- | :---: |
-| 🥉 **Bronze (x1)** | **1 PR** |
-| 🥈 **Silver (x2)** | **10 PRs** |
-| 🥇 **Gold (x3 / Max)** | **24 PRs** |
+A collection of developer tooling, CI/CD experimentation scripts, and collaborative workflow automation utilities.
 
 ---
 
-## ⚙️ How It Works
+## 📌 Overview
 
-1. **Compliant Git Trailers**: Every commit includes the exact Git trailer format required by GitHub's badge verification engine:
-   ```git
-   Co-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-   ```
-2. **Branch & PR Lifecycle**: The runner creates a feature branch, commits an entry, opens a PR against `main`, and uses `gh pr merge --merge` to preserve commit history and trailers intact.
-3. **Paced Execution**: Employs rate-limit protection delays between each cycle.
+This repository serves as a modular sandbox for testing automated branch strategies, collaborative version control workflows, and GitHub API interactions.
+
+### Key Focus Areas:
+- **Workflow Automation**: Scripted feature branch lifecycle management and Pull Request flow orchestration.
+- **Git Metadata & Attribution**: Multi-author commit trailers, automated changelog entries, and release tracking.
+- **CI/CD Experiments**: Testing automated bot interactions and continuous integration pipelines.
 
 ---
 
-## 🛠️ Usage Instructions
+## 🛠️ Project Structure
 
-### Step 1: Log in to GitHub CLI (One-time)
-```powershell
-gh auth login
-```
-*(Select `GitHub.com` -> `HTTPS` -> `Paste an authentication token` or `Login with a web browser`)*
-
-### Step 2: Run the Automation
-To unlock the **Gold Tier** (24 PRs):
-```powershell
-.\run-pair-extraordinaire.ps1 -Tier Gold
-```
-
-Or target a specific tier:
-```powershell
-# Bronze (1 PR)
-.\run-pair-extraordinaire.ps1 -Tier Bronze
-
-# Silver (10 PRs)
-.\run-pair-extraordinaire.ps1 -Tier Silver
+```text
+├── .github/              # CI/CD and automation workflows
+├── scripts/              # Automation and synchronization utilities
+├── activity-log.md       # Automated collaborative contribution log
+└── README.md             # Project documentation
 ```
 
 ---
 
-## 🔍 Verification & Post-Run Steps
+## 🚀 Getting Started
 
-1. **Verify Badges on GitHub Profile**:
-   - Go to `https://github.com/<your-username>`
-   - Check the **Achievements** section on the left sidebar.
-   - Note: GitHub achievements usually update within 5–15 minutes after the PRs are merged.
-2. **Archive or Retain**:
-   - Keep the repository active for at least 24–48 hours until GitHub calculates your badge status.
-   - You can leave it as a public archive or delete it afterwards once the badge is permanently displayed on your profile.
+### Prerequisites
+- [Git](https://git-scm.com/) (v2.30+)
+- [GitHub CLI](https://cli.github.com/) (`gh`)
+- PowerShell 7+ or Core shell
+
+### Basic Usage
+```bash
+# Clone the repository
+git clone https://github.com/imMohammedSahil/dev-automation-lab.git
+
+# Navigate to directory
+cd dev-automation-lab
+```
+
+---
+
+## 📄 License
+This project is licensed under the MIT License.
