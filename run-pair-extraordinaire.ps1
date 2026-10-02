@@ -143,21 +143,22 @@ try {
     $repoExists = $false
 }
 
+if (-not $repoExists) {
+    $visibilityFlag = if ($IsPublic) { "--public" } else { "--private" }
+    Write-Info "Creating remote repository '$RepoName' ($visibilityFlag)..."
+    gh repo create "$currentUser/$RepoName" $visibilityFlag
+    Write-Success "Remote repository created."
+}
+
 $remotes = git remote
 if ($remotes -notcontains "origin") {
     git remote add origin "https://github.com/$currentUser/$RepoName.git"
     Write-Success "Linked origin remote to https://github.com/$currentUser/$RepoName.git"
 }
 
-if (-not $repoExists) {
-    $visibilityFlag = if ($IsPublic) { "--public" } else { "--private" }
-    Write-Info "Creating remote repository '$RepoName' ($visibilityFlag)..."
-    gh repo create "$currentUser/$RepoName" $visibilityFlag --source=. --remote=origin --push
-    Write-Success "Remote repository created and linked to origin."
-} else {
-    git push -u origin main
-    Write-Success "Pushed main branch to origin."
-}
+Write-Info "Ensuring 'main' branch is pushed to origin..."
+git push -u origin main
+Write-Success "Pushed main branch to origin."
 
 # 5. Execute Co-Authored PR Workflow
 Write-Step "Executing $prTargetCount Co-Authored Pull Requests"
